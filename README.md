@@ -43,3 +43,10 @@ You need to create a `functions.config.json` on the root level of your functions
         }
       ]
     }
+
+
+## TODOS
+  - Add schema validator for config file
+  - Handle local function dependencies, thanks to nodejs module structre we might not need this for nodejs functions
+  - Figure out how to implement middlewares for nodejs applications
+  - ***Potentially add other languages in the long run***

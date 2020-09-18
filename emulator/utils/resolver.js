@@ -5,6 +5,16 @@ module.exports = function (functionsPath) {
 
   const configFile = require(configFilePath);
 
+  if (!('functions' in configFile)) {
+    console.error('`functions` field is missing in config file.\n');
+    process.exit(1);
+  }
+
+  if (!Array.isArray(configFile.functions)) {
+    console.error('`functions` needs to be an array.\n');
+    process.exit(1);
+  }
+
   return configFile.functions.map(func => {
     const functionPath = path.resolve(process.cwd(), functionsPath, func.entry);
 

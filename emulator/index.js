@@ -7,6 +7,11 @@ const app = express();
 
 const functions = bootstrap(app);
 
+if (functions.length === 0) {
+  console.error('There are no functions to run.\n');
+  process.exit(1);
+}
+
 app.use((err, req, res, next) => {
   console.log(err.stack);
 
