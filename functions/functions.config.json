@@ -1,0 +1,16 @@
+{
+  "functions": [
+    {
+      "name": "echo",
+      "path": "/echo",
+      "entry": "echo/index.js",
+      "method": "GET"
+    },
+    {
+      "name": "hello-world",
+      "path": "/hello-world",
+      "entry": "hello-world/index.js",
+      "method": "GET"
+    }
+  ]
+}
