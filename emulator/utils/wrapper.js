@@ -4,10 +4,14 @@ module.exports = function (func) {
       request: req
     };
 
-    const result = await new Promise((resolve) => {
-      resolve(func(context))
-    });
-
-    res.send(result);
+    try {
+      const result = await new Promise((resolve) => {
+        resolve(func(context))
+      });
+  
+      return res.send(result);
+    } catch (error) {
+      next(error);
+    }
   }
 }
