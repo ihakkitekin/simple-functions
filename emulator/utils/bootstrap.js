@@ -1,11 +1,16 @@
-const { argv } = require('yargs');
+const cli = require('./cli');
 const resolver = require('./resolver');
 const wrapper = require('./wrapper');
 
 module.exports = function (app) {
-  const functionsPath = argv.functionsPath || 'functions';
+  const functionsPath = cli.getFunctionsPath();
+  const targetFunctions = cli.getTargetFunctions();
 
-  const functions = resolver(functionsPath);
+  let functions = resolver(functionsPath);
+
+  if (targetFunctions.length > 0) {
+    functions = functions.filter(func => targetFunctions.includes(func.name));
+  }
 
   functions.forEach(func => {
     switch ((func.method || 'get').toLowerCase()) {

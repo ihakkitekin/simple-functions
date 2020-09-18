@@ -1,8 +1,8 @@
 const express = require('express');
-const { argv } = require('yargs');
 const bootstrap = require('./utils/bootstrap');
+const cli = require('./utils/cli');
 
-const port = argv.port || 32245;
+const port = cli.getPort();
 const app = express();
 
 const functions = bootstrap(app);
