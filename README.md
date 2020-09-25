@@ -12,6 +12,31 @@ Simple functions emulator for local development
   `npm start -- -s examples` or `npm start -- -s example -f echo,hello-world`
 
 
+## Function Structure 
+  Each function should export default one function to be used by server. Additionally you can export an `init` function to do some work before the function is registered.
+
+  Example:
+
+    // ./examples/react-ssr/index.js
+ 
+    const utils = require('./utils');
+
+    module.exports = function (context) {
+      const props = {
+        name: 'Stream'
+      }
+
+      const html = utils.renderClient(props);
+
+      return html;
+    }
+
+    module.exports.init = async function () {
+      const targetPath = 'E:\\code\\simple-functions\\examples\\__react-app\\dist\\server.bundle.js';
+
+      await utils.downloadClient(targetPath);
+    }
+
 ## Function Context
 This section is under development, currently there is only 1 parameter available for functions and it only has, request parameter comes from express.req oject
 
