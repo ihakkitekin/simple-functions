@@ -1,15 +1,18 @@
 module.exports = function (func) {
   return async (req, res, next) => {
     const context = {
-      request: req
+      request: req,
+      response: res
     };
 
     try {
       const result = await new Promise((resolve) => {
         resolve(func(context))
       });
-  
-      return res.send(result);
+
+      if (!res.headersSent) {
+        return res.send(result);
+      }
     } catch (error) {
       next(error);
     }

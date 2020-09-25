@@ -11,6 +11,12 @@
       "path": "/hello-world",
       "entry": "hello-world/index.js",
       "method": "GET"
+    },
+    {
+      "name": "react-ssr",
+      "path": "/react-ssr",
+      "entry": "react-ssr/index.js",
+      "method": "GET"
     }
   ]
 }
