@@ -1,17 +1,14 @@
 const path = require('path');
+const ajv = require('../schemas');
 
 module.exports = function (functionsPath) {
   const configFilePath = path.resolve(process.cwd(), functionsPath, 'functions.config.json');
 
   const configFile = require(configFilePath);
+  const isValidConfigFile = ajv.validate('config', configFile);
 
-  if (!('functions' in configFile)) {
-    console.error('`functions` field is missing in config file.\n');
-    process.exit(1);
-  }
-
-  if (!Array.isArray(configFile.functions)) {
-    console.error('`functions` needs to be an array.\n');
+  if (!isValidConfigFile) {
+    console.error('ERROR:', ajv.errorsText());
     process.exit(1);
   }
 

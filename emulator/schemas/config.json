@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "path",
+          "entry"
+        ]
+      }
+    }
+  },
+  "required": [
+    "functions"
+  ]
+}
