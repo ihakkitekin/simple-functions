@@ -8,7 +8,7 @@ Simple functions emulator for local development
   - `-f, --functions`: specify which functions to run on emulator, if not present, runs all functions.
 
 
-## Run functions
+## Run Examples
   `npm start -- -s examples` or `npm start -- -s example -f echo,hello-world`
 
 
@@ -46,9 +46,9 @@ This section is under development, currently there is only 1 parameter available
 You need to create a `functions.config.json` on the root level of your functions folder
 
 #### functions: Array
-  - `name`: Name of the function, this is used to call function from cli
-  - `path`: Function path to be exposed from server
-  - `entry`: Entry file path of the function
+  - `name`: *Required*. Name of the function, this is used to call function from cli
+  - `path`: *Required*. Function path to be exposed from server
+  - `entry`: *Required*. Entry file path of the function
   - `method`: HTTP method for the function, defaults to `GET`
 
 
@@ -72,7 +72,6 @@ You need to create a `functions.config.json` on the root level of your functions
 
 
 ## TODOS
-  - Add schema validator for config file
   - Handle local function dependencies, thanks to nodejs module structre we might not need this for nodejs functions
   - Figure out how to implement middlewares for nodejs applications
   - ***Potentially add other languages in the long run***
