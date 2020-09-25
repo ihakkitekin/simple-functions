@@ -11,7 +11,8 @@ module.exports = function (context) {
 }
 
 module.exports.init = async function () {
-  const targetPath = 'E:\\code\\simple-functions\\examples\\__react-app\\dist\\server.bundle.js';
+  const path = require('path');
+  const targetPath = path.resolve(__dirname, '../__react-app/dist/server.bundle.js');
 
   await utils.downloadClient(targetPath);
 }
