@@ -24,6 +24,7 @@ module.exports = function (functionsPath) {
       name: func.name,
       path: func.path,
       method: func.method,
+      init: _function.init,
       self: _function
     }
   });
